@@ -1,16 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs3360.PrimaryController">
-   <children>
-      <Label text="Primary View" />
-      <Button fx:id="primaryButton" text="Switch to Secondary View" onAction="#switchToSecondary"/>
-   </children>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
+<!-- 
+Main container for the entire layout. We use a VBox to stack elements vertically.
+The main VBox holds the header at the top, and two sections below it.
+-->
+<VBox alignment="TOP_CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs3360.PrimaryController">
+    
+    <!-- Children are the elements inside this main VBox, laid out top-to-bottom -->
+    <children>
+
+        <!-- HEADER SECTION: An HBox to hold the header elements horizontally -->
+        <HBox alignment="CENTER" spacing="10.0" style="-fx-background-color: lightblue;">
+            <!-- Title for the entire page -->
+            <Label text="Welcome to Password Manager!" style="-fx-font-size: 24px; -fx-text-fill: navy;" />
+            <!-- Add a smaller padding for header -->
+            <padding>
+                <Insets top="5" bottom="10" />
+            </padding>
+        </HBox>
+
+        <!-- WELCOME MESSAGE SECTION -->
+        <VBox alignment="CENTER" spacing="20.0">
+            <children>
+                <!-- Centered welcome message -->
+                <Label text="We're glad to have you back! Please sign up or log in to continue." style="-fx-font-size: 16px; -fx-text-fill: darkslategray;" />
+            </children>
+        </VBox>
+
+        <!-- BUTTON SECTION: An HBox for side-by-side buttons -->
+        <HBox alignment="CENTER" spacing="20.0">
+            <children>
+                <!-- Button for Sign Up -->
+                <Button fx:id="primaryButton2" text="Sign Up" onAction="#switchToSecondary" style="-fx-font-size: 14px;" />
+                <!-- Button for Log In -->
+                <Button fx:id="primaryButton2" text="Log In" onAction="#switchToSecondary" style="-fx-font-size: 14px;" />
+            </children>
+        </HBox>
+        
+    </children>
+
+    <!-- Padding for the main container to control space at the window edges -->
+    <padding>
+        <Insets top="10.0" left="50.0" right="50.0" bottom="50.0" />
+    </padding>
+
 </VBox>
