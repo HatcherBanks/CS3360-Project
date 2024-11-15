@@ -39,7 +39,7 @@ The main VBox holds the header at the top, and two sections below it.
                 <!-- Button for Sign Up -->
                 <Button fx:id="primaryButton2" text="Sign Up" onAction="#switchToSecondary" style="-fx-font-size: 14px;" />
                 <!-- Button for Log In -->
-                <Button fx:id="primaryButton2" text="Log In" onAction="#switchToSecondary" style="-fx-font-size: 14px;" />
+                <Button fx:id="toLoginIn" text="Log In" onAction="#switchToLogin" style="-fx-font-size: 14px;" />
             </children>
         </HBox>
         
