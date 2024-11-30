@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -15,29 +16,34 @@
 
 <VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs3360.WelcomeController">
   <children>
-    <MenuBar VBox.vgrow="NEVER" />
-    <AnchorPane>
-      <Button fx:id="toPrimary" layoutX="1000.0" layoutY="10.0" mnemonicParsing="false" onAction="#switchToPrimary" text="Log Out" />
-    </AnchorPane>
+      <TitledPane prefHeight="71.0" prefWidth="900.0" text="                                   Welcome to the Password Manager">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </TitledPane>
     <SplitPane dividerPositions="0.2505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <items>
         <AnchorPane>
           <children>
-            <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Menu (Might Get rid of it)" textAlignment="CENTER" wrapText="false">
-              <font>
-                <Font size="18.0" fx:id="x1" />
-              </font>
-              <textFill>
-                <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
-              </textFill>
-            </Label>
+                  <MenuButton fx:id="accountInfoMenuButton" layoutX="61.0" layoutY="34.0" mnemonicParsing="false" text="Account Info">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Change Master Password" />
+                      <MenuItem mnemonicParsing="false" text="Delete Account" />
+                    </items>
+                  </MenuButton>
           </children>
         </AnchorPane>
-        <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
+        <ScrollPane prefWidth="726.0">
           <content>
-            <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
+            <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="546.0" prefWidth="646.0">
               <children>
-                <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Passwords will go here" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+                <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Passwords will go here" textAlignment="CENTER" wrapText="false">
+                           <font>
+                      <Font size="18.0" fx:id="x1" />
+                           </font>
+                           <textFill>
+                      <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
+                           </textFill></Label>
               </children>
             </AnchorPane>
           </content>
