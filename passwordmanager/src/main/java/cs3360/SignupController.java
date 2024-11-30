@@ -4,14 +4,12 @@ import java.io.IOException;
 
 import javafx.fxml.FXML;
 
-public class PrimaryController {
+public class SignupController {
 
-    // Function to switch to the secondary view
     @FXML
-    private void switchToSignup() throws IOException {
-        App.setRoot("signup");
+    private void switchToPrimary() throws IOException {
+        App.setRoot("primary");
     }
-
     // Function to switch to the login view
     @FXML
     private void switchToLogin() throws IOException {
