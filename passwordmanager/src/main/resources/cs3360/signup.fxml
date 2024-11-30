@@ -9,22 +9,22 @@
 
 <VBox alignment="CENTER" prefHeight="185.0" prefWidth="270.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs3360.SignupController">
     <children>
-        <Label alignment="TOP_CENTER" text="Sign In View" />
-      <PasswordField prefHeight="38.0" prefWidth="206.0" promptText="     Enter Master Password">
+        <Label alignment="TOP_CENTER" text="Sign Up View" />
+      <PasswordField fx:id="signupPasswordField1" prefHeight="38.0" prefWidth="206.0" promptText="     Enter Master Password">
          <font>
             <Font size="17.0" />
          </font>
          <VBox.margin>
             <Insets />
          </VBox.margin></PasswordField>
-      <PasswordField layoutX="30.0" layoutY="103.0" promptText="    Renter Master Password">
+      <PasswordField fx:id="signupPasswordField2" layoutX="30.0" layoutY="103.0" promptText="    Renter Master Password">
          <font>
             <Font size="17.0" />
          </font>
       </PasswordField>
       <Label alignment="TOP_CENTER" text="Already Create Master Password" />
       <Label alignment="TOP_CENTER" layoutX="30.0" layoutY="184.0" text="Login Instead" />
-      <Button fx:id="toLoginIn" text="Log In" onAction="#switchToLogin" style="-fx-font-size: 14px;" />
+      <Button fx:id="toLoginIn" onAction="#switchToLogin" style="-fx-font-size: 14px;" text="Log In" />
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

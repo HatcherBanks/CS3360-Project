@@ -1,6 +1,7 @@
 package cs3360;
 
 import java.io.IOException;
+
 import javafx.fxml.FXML;
 
 public class LoginController {
@@ -8,5 +9,10 @@ public class LoginController {
     @FXML
     private void switchToPrimary() throws IOException {
         App.setRoot("primary");
+    }
+
+    @FXML
+    private void switchToWelcome() throws IOException {
+        App.setRoot("welcome");
     }
 }
