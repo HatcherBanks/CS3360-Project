@@ -7,8 +7,8 @@ import javafx.fxml.FXML;
 public class SignupController {
 
     @FXML
-    private void switchToPrimary() throws IOException {
-        App.setRoot("primary");
+    private void switchToWelcome() throws IOException {
+        App.setRoot("welcome");
     }
     // Function to switch to the login view
     @FXML
