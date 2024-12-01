@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 
 public class SignupController {
@@ -15,6 +16,18 @@ public class SignupController {
 
     @FXML
     private void createMasterPassword() {
+        try {
+            // Check if a master password already exists
+            if (EncryptionUtil.masterPasswordExists()) {
+                // Show a popup and redirect to login if a password exists
+                showMasterPasswordExistsPopup();
+                return;
+            }
+        } catch (IOException e) {
+            showAlert("Error", "Failed to check existing master password: " + e.getMessage());
+            return;
+        }
+
         String password1 = signupPasswordField1.getText();
         String password2 = signupPasswordField2.getText();
 
@@ -29,7 +42,7 @@ public class SignupController {
             return;
         }
 
-        // Validate password strength (optional but recommended)
+        // Validate password strength
         if (password1.length() < 8) {
             showAlert("Error", "Password must be at least 8 characters long.");
             return;
@@ -43,11 +56,31 @@ public class SignupController {
             // Show success message
             showAlert("Success", "Master password created successfully!");
 
-            // Optional: Switch to login or welcome screen
-            switchToLogin();
+            // Switch to Welcome screen
+            switchToWelcome();
         } catch (Exception e) {
             showAlert("Error", "Failed to create master password: " + e.getMessage());
         }
+    }
+
+    private void showMasterPasswordExistsPopup() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Master Password Exists");
+        alert.setHeaderText(null);
+        alert.setContentText("You have already set up a master password.");
+
+        ButtonType loginButton = new ButtonType("Login");
+        alert.getButtonTypes().setAll(loginButton);
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == loginButton) {
+                try {
+                    switchToLogin();
+                } catch (IOException e) {
+                    showAlert("Error", "Failed to navigate to login: " + e.getMessage());
+                }
+            }
+        });
     }
 
     private void showAlert(String title, String content) {

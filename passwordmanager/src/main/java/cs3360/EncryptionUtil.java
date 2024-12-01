@@ -63,4 +63,14 @@ public class EncryptionUtil {
             writer.write(encryptedPassword);
         }
     }
+
+    // Check if the master password already exists
+    public static boolean masterPasswordExists() throws IOException {
+        // Get the path to the master password file
+        String userHome = System.getProperty("user.home");
+        Path passwordFilePath = Paths.get(userHome, "Downloads", "masterPasswords", "masterPassword.txt");
+
+        // Check if the file exists
+        return Files.exists(passwordFilePath);
+    }
 }
