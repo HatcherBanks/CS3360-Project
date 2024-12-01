@@ -1,5 +1,8 @@
 package cs3360;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -7,9 +10,19 @@ import java.nio.file.Paths;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
 
 public class WelcomeController {
+
+    @FXML
+    private VBox contentVBox; // This will be used to display content in the scroll pane (to be bound in FXML)
 
     @FXML
     public void initialize() {
@@ -18,8 +31,6 @@ public class WelcomeController {
 
     /**
      * Handles the "Change Master Password" button.
-     * Shows a confirmation popup and deletes the master password file if confirmed.
-     * Switches to the signup screen.
      */
     @FXML
     private void changeMasterPassword() {
@@ -46,8 +57,6 @@ public class WelcomeController {
 
     /**
      * Handles the "Delete Account" button.
-     * Shows a confirmation popup and deletes the entire masterPasswords directory if confirmed.
-     * Switches to the primary screen.
      */
     @FXML
     private void deleteAccount() {
@@ -84,7 +93,6 @@ public class WelcomeController {
 
     /**
      * Handles the "Log Out" button.
-     * Shows a confirmation popup and switches to the primary screen if confirmed.
      */
     @FXML
     private void logOut() {
@@ -106,10 +114,85 @@ public class WelcomeController {
     }
 
     /**
+     * Handles the "Add New Password" button.
+     * Opens a popup with text fields to collect account info and save it to a new text file.
+     */
+    @FXML
+    private void addNewPassword() {
+        // Create a new stage for the input popup
+        Stage addPasswordStage = new Stage();
+
+        // Create the text fields and buttons for the popup
+        Label accountLabel = new Label("Account Name:");
+        TextField accountNameField = new TextField();
+        Label usernameLabel = new Label("Username:");
+        TextField usernameField = new TextField();
+        Label passwordLabel = new Label("Password:");
+        TextField passwordField = new TextField();
+
+        Button addButton = new Button("Add");
+        Button cancelButton = new Button("Cancel");
+
+        // Setup layout for the popup (VBox)
+        VBox layout = new VBox(10);
+        layout.getChildren().addAll(accountLabel, accountNameField, usernameLabel, usernameField, passwordLabel, passwordField, addButton, cancelButton);
+
+        // Handle the "Add" button action
+        addButton.setOnAction(e -> {
+            String accountName = accountNameField.getText();
+            String username = usernameField.getText();
+            String password = passwordField.getText();
+
+            if (accountName.isEmpty() || username.isEmpty() || password.isEmpty()) {
+                showError("Input Error", "Please fill in all fields.");
+            } else {
+                try {
+                    // Save the data to a text file
+                    File newFile = new File(System.getProperty("user.home"), "Downloads/passwords/" + accountName + ".txt");
+                    newFile.getParentFile().mkdirs(); // Create directory if not exists
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(newFile));
+                    writer.write("Account Name: " + accountName + "\n");
+                    writer.write("Username: " + username + "\n");
+                    writer.write("Password: " + password + "\n");
+                    writer.close();
+
+                    // Update the scroll pane with new content
+                    updateScrollPane(newFile);
+
+                    // Close the popup
+                    addPasswordStage.close();
+                } catch (IOException ex) {
+                    showError("Error", "Failed to save password: " + ex.getMessage());
+                }
+            }
+        });
+
+        // Handle the "Cancel" button action
+        cancelButton.setOnAction(e -> addPasswordStage.close());
+
+        // Show the popup
+        addPasswordStage.setScene(new javafx.scene.Scene(layout, 300, 250));
+        addPasswordStage.show();
+    }
+
+    /**
+     * Updates the scroll pane content with the new password file's details.
+     * @param file The file to be displayed.
+     */
+    private void updateScrollPane(File file) {
+        try {
+            // Read the file content and display it in the scroll pane
+            String content = new String(Files.readAllBytes(file.toPath()));
+            Label newContentLabel = new Label(content);
+            newContentLabel.setFont(new Font(16));
+            contentVBox.getChildren().add(newContentLabel); // Add to the content VBox displayed in the scroll pane
+        } catch (IOException e) {
+            showError("Error", "Failed to display the new password: " + e.getMessage());
+        }
+    }
+
+    /**
      * Displays an error alert with the given title and content.
-     *
-     * @param title   Title of the alert
-     * @param content Content of the alert
      */
     private void showError(String title, String content) {
         Alert errorAlert = new Alert(Alert.AlertType.ERROR);
