@@ -1,8 +1,10 @@
-c:\Users\cmccu\cs3360\CS3360-Project\passwordmanager\src\main\java\module-info.java
-c:\Users\cmccu\cs3360\CS3360-Project\passwordmanager\src\main\java\cs3360\App.java
-c:\Users\cmccu\cs3360\CS3360-Project\passwordmanager\src\main\java\cs3360\EncryptionUtil.java
-c:\Users\cmccu\cs3360\CS3360-Project\passwordmanager\src\main\java\cs3360\SignupController.java
-c:\Users\cmccu\cs3360\CS3360-Project\passwordmanager\src\main\java\cs3360\WelcomeController.java
-c:\Users\cmccu\cs3360\CS3360-Project\passwordmanager\src\main\java\cs3360\PrimaryController.java
-c:\Users\cmccu\cs3360\CS3360-Project\passwordmanager\src\main\java\cs3360\LoginController.java
-c:\Users\cmccu\cs3360\CS3360-Project\passwordmanager\src\main\java\cs3360\SecondaryController.java
+/Users/hatcherbanks/Desktop/CS3360 Project/CS3360-Project/passwordmanager/src/main/java/cs3360/PrimaryController.java
+/Users/hatcherbanks/Desktop/CS3360 Project/CS3360-Project/passwordmanager/src/main/java/module-info.java
+/Users/hatcherbanks/Desktop/CS3360 Project/CS3360-Project/passwordmanager/src/main/java/cs3360/SecondaryController.java
+/Users/hatcherbanks/Desktop/CS3360 Project/CS3360-Project/passwordmanager/src/main/java/cs3360/DatabaseController.java
+/Users/hatcherbanks/Desktop/CS3360 Project/CS3360-Project/passwordmanager/src/main/java/cs3360/WelcomeController.java
+/Users/hatcherbanks/Desktop/CS3360 Project/CS3360-Project/passwordmanager/src/main/java/cs3360/EncryptionUtil.java
+/Users/hatcherbanks/Desktop/CS3360 Project/CS3360-Project/passwordmanager/src/main/java/cs3360/SignupController.java
+/Users/hatcherbanks/Desktop/CS3360 Project/CS3360-Project/passwordmanager/src/main/java/cs3360/DatabaseConnection.java
+/Users/hatcherbanks/Desktop/CS3360 Project/CS3360-Project/passwordmanager/src/main/java/cs3360/LoginController.java
+/Users/hatcherbanks/Desktop/CS3360 Project/CS3360-Project/passwordmanager/src/main/java/cs3360/App.java
