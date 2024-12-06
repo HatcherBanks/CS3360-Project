@@ -73,4 +73,49 @@ public class EncryptionUtil {
         // Check if the file exists
         return Files.exists(passwordFilePath);
     }
+
+    // NEW METHODS FOR PASSWORD ENTRY ENCRYPTION
+    /**
+     * Encrypt an individual password entry
+     * @param password The password to encrypt
+     * @param masterPassword The master password used for encryption
+     * @return Base64 encoded encrypted password
+     * @throws Exception If encryption fails
+     */
+    public static String encryptEntry(String password, String masterPassword) throws Exception {
+        // Generate a secret key from the master password
+        SecretKey key = generateSecretKey(masterPassword);
+        
+        // Create cipher for encryption
+        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+        cipher.init(Cipher.ENCRYPT_MODE, key);
+        
+        // Encrypt the password
+        byte[] encryptedBytes = cipher.doFinal(password.getBytes());
+        
+        // Return Base64 encoded encrypted password
+        return Base64.getEncoder().encodeToString(encryptedBytes);
+    }
+
+    /**
+     * Decrypt an individual password entry
+     * @param encryptedPassword Base64 encoded encrypted password
+     * @param masterPassword The master password used for decryption
+     * @return Decrypted password
+     * @throws Exception If decryption fails
+     */
+    public static String decryptEntry(String encryptedPassword, String masterPassword) throws Exception {
+        // Generate a secret key from the master password
+        SecretKey key = generateSecretKey(masterPassword);
+        
+        // Create cipher for decryption
+        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+        cipher.init(Cipher.DECRYPT_MODE, key);
+        
+        // Decrypt the password
+        byte[] decryptedBytes = cipher.doFinal(Base64.getDecoder().decode(encryptedPassword));
+        
+        // Return decrypted password
+        return new String(decryptedBytes);
+    }
 }

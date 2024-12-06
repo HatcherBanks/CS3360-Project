@@ -79,8 +79,4 @@ public class LoginController {
         alert.showAndWait();
     }
 
-    @FXML
-    private void switchToPrimary() throws IOException {
-        App.setRoot("primary");
-    }
 }

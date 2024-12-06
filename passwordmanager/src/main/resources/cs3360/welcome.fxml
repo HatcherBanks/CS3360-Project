@@ -12,7 +12,6 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>  <!-- Ensure correct import for Font -->
 
-
 <VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs3360.WelcomeController">
   <children>
       <TitledPane prefHeight="71.0" prefWidth="900.0" text="                                   Welcome to the Password Manager" textFill="#0d0d0d">

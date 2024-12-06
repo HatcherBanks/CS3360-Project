@@ -18,7 +18,7 @@
             <Insets />
          </VBox.margin>
       </PasswordField>
-      <PasswordField fx:id="signupPasswordField2" layoutX="30.0" layoutY="103.0" promptText="    Renter Master Password">
+      <PasswordField fx:id="signupPasswordField2" layoutX="30.0" layoutY="103.0" promptText="    Re-enter Master Password">
          <font>
             <Font size="17.0" />
          </font>
